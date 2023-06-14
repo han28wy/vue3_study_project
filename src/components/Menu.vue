@@ -13,7 +13,6 @@ const selectMenu = (val: any, path: any, item: any) => {
 };
 </script>
 <template>
-  <div>1222222</div>
       <div class="menu">
         <el-menu
           class="el-menu-vertical-demo"

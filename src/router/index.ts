@@ -4,7 +4,7 @@ const routes = [
     {
         name:'home',
         path:'/home',
-        component: () => import('@/components/Layout.vue'),
+        component: () => import('@/views/Layout.vue'),
         children:[
             {
                 name:'Nav1',
