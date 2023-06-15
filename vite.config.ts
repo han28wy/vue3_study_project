@@ -28,5 +28,14 @@ export default defineConfig({
         javascriptEnabled: true,
       },
     },
-  }
+  },
+  server:{
+    proxy:{
+      '/m1':{
+        target:'',
+        changeOrigin:true,
+      }
+    }
+  },
+  build:{}
 })
