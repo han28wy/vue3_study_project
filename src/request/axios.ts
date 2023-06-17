@@ -1,17 +1,15 @@
-import Axios from 'axios';
-import { ElMessage } from 'element-plus';
-import store from '@/store/index';
+import axios from 'axios';
  
 const baseURL = import.meta.env.VITE_BASEURL;
-const axios = Axios.create({
+const $http = axios.create({
   baseURL,
   timeout: 20000, // 请求超时 20s
 });
  
 // 前置拦截器（发起请求之前的拦截）
-axios.interceptors.request.use(
+$http.interceptors.request.use(
   (config) => {
-    config.headers['token'] = store.state.token;
+    config.headers['token'] = 'token';
     return config;
   },
   (error) => {
@@ -20,7 +18,7 @@ axios.interceptors.request.use(
 );
  
 // 后置拦截器（获取到响应时的拦截）
-axios.interceptors.response.use(
+$http.interceptors.response.use(
   (response) => {
     /**
      * 根据你的项目实际情况来对 response 和 error 做处理
@@ -48,13 +46,13 @@ axios.interceptors.response.use(
     if (error.response && error.response.data) {
       const code = error.response.status;
       const msg = error.response.data.message;
-      ElMessage.error(`Code: ${code}, Message: ${msg}`);
+      // ElMessage.error(`Code: ${code}, Message: ${msg}`);
       console.error(`[Axios Error]`, error.response);
     } else {
-      ElMessage.error(`${error}`);
+      // ElMessage.error(`${error}`);
     }
     return Promise.reject(error);
   },
 );
  
-export default axios;
+export default $http;
