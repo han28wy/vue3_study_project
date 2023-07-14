@@ -15,6 +15,7 @@ export default defineConfig({
   }),
   Components({
     resolvers: [ElementPlusResolver()],
+    dirs: ['src/components'],
     dts: 'src/type/components.d.ts',
   })],
   resolve:{

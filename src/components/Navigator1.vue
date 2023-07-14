@@ -7,5 +7,5 @@ const handleClick=()=>{
 }
 </script>
 <template>
-    <div @click="handleClick">1111</div>
+    <div class="bg-red-300" @click="handleClick">1111</div>
 </template>

@@ -5,6 +5,7 @@ import ElementPlus from 'element-plus'
 import 'element-plus/theme-chalk/index.css'
 import router from './router'
 import { setGlobalOptions } from 'vue-request'
+import './tailwind.css'
 
 createApp(App).use(router).use(ElementPlus).mount('#app')
 
