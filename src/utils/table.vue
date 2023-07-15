@@ -50,8 +50,10 @@ const thisPageSize = computed({
 });
 watchEffect(() => {
 	emit("changePage", {
-		startIndex: prop.currentPage * prop.pageSize - prop.pageSize,
-		endIndex: prop.currentPage * prop.pageSize - 1,
+		// startIndex: prop.currentPage * prop.pageSize - prop.pageSize,
+		// endIndex: prop.currentPage * prop.pageSize - 1,
+		startIndex: prop.currentPage,
+		endIndex: prop.pageSize,
 	});
 });
 </script>

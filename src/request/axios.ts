@@ -9,7 +9,7 @@ const $http = axios.create({
 // 前置拦截器（发起请求之前的拦截）
 $http.interceptors.request.use(
   (config) => {
-    config.headers['token'] = 'token';
+    // config.headers['token'] = 'token';
     return config;
   },
   (error) => {
@@ -24,23 +24,15 @@ $http.interceptors.response.use(
      * 根据你的项目实际情况来对 response 和 error 做处理
      * 这里对 response 和 error 不做任何处理，直接返回
      */
-    const { headers, data } = response;
+    const { data } = response;
     const { code } = response.data;
-    const contentType = headers['content-type'];
-    if (contentType.includes('force-download')) {
-      let obj = {
-        code: 200,
-        data: { headers, data },
-        message: '',
-      };
-      return obj;
-    }
+    return response.data;
  
-    if (code === 200) {
-      return response.data;
-    } else {
-      return Promise.reject(response.data);
-    }
+    // if (code === 200) {
+    //   return response.data;
+    // } else {
+    //   return Promise.reject(response.data);
+    // }
   },
   (error) => {
     if (error.response && error.response.data) {

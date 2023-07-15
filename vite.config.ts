@@ -33,7 +33,7 @@ export default defineConfig({
   server:{
     proxy:{
       '/m1':{
-        target:'',
+        target:'http://127.0.0.1:4523',
         changeOrigin:true,
       }
     }
