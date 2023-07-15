@@ -29,6 +29,7 @@ const fetchData = async (pageNum:any, pageSize:any) => {
     tableData.push(obj)
   })
   total = res.data.total
+  console.log("🚀 ~ file: Navigator1.vue:32 ~ fetchData ~ total:", total)
 }
 </script>
 
