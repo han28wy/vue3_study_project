@@ -1,23 +1,28 @@
 <script lang="ts" setup>
-// import axios from 'axios'
 import Resident from '../type/Community.ts'
 import emsTable from '../utils/table.vue'
-import { ref, onMounted } from 'vue'
-import axiosGet from '@/request/index.ts'
+import { ref, onMounted, getCurrentInstance } from 'vue'
+// import request from '@/request/axios'
+const {proxy} = getCurrentInstance()
 
 onMounted(() => {
   fetchData(1,10)
+  console.log(proxy.$msg)
 })
 
 let currentPage = ref(1)
 let pageSize = ref(10)
 let total = ref(100)
 let tableData = reactive<Resident>([])
+
 const changePage = (pageNum:any, pageSize:any)=>{
   fetchData(pageNum, pageSize)
 }
 const fetchData = async (pageNum:any, pageSize:any) => {
-  const res = await axiosGet('/m1/3018027-0-default/people/list')
+  const res = await proxy.$request('/m1/3018027-0-default/people/list', {params: {
+    pageNum: 1,
+    pageSize: 10
+  }})
   const arr:any[] = res.data.list
   arr.forEach((item) => {
     let obj = item.communityResident

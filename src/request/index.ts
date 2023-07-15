@@ -1,4 +1,3 @@
-import { axiosGet } from './index';
 import $http from './axios';
 
 const axiosGet = (url: string, data: any) => {
