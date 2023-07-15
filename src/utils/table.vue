@@ -55,7 +55,7 @@ watchEffect(() => {
 	});
 });
 </script>
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .pagination {
 	overflow: hidden;
 	padding: 20px 10px;

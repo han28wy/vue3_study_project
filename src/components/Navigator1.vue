@@ -1,11 +1,17 @@
 <script lang="ts" setup>
 import emsTable from '../utils/table.vue'
-import axiosGet from '@/request/index.ts'
+// import axiosGet from '@/request/index.ts'
 
-const handleClick=()=>{
-    const res = axiosGet('/request/index')
-    console.log(888)
-    console.log(res)
+// const handleClick=()=>{
+//     const res = axiosGet('/request/index')
+//     console.log(888)
+//     console.log(res)
+// }
+let currentPage = ref(1)
+let pageSize = ref(50)
+let total = ref(100)
+const changePage = ({startIndex, endIndex}:any)=>{
+  console.log(startIndex, endIndex)
 }
 const tableData = [
   {
@@ -32,12 +38,15 @@ const tableData = [
 </script>
 
 <template>
-    <div class="bg-red-300" @click="handleClick">1111</div>
-    <emsTable>
-        <el-table :data="tableData">
-            <el-table-column prop="date" label="Date" width="180" />
-            <el-table-column prop="name" label="Name" width="180" />
-            <el-table-column prop="address" label="Address" />
-        </el-table>
-    </emsTable>
+    <el-table :data="tableData">
+        <el-table-column prop="date" label="Date" width="180" />
+        <el-table-column prop="name" label="Name" width="180" />
+        <el-table-column prop="address" label="Address" />
+    </el-table>
+    <emsTable
+        v-model:currentPage="currentPage" 
+        v-model:pageSize="pageSize" 
+        :total="total" 
+        @change-page="changePage" 
+      />
 </template>
